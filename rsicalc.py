@@ -31,7 +31,7 @@ def calc_rsi(data, period = 14):
 
 def plot_rsi(data, rsi, ticker):
     data['rsi'] = rsi
-    figure = plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(12, 6))
     plt.plot(data.index, data['rsi'], label='RSI', color='blue')
     plt.axhline(70, color='red', linestyle='--', label='Overbought (70)')
     plt.axhline(30, color='green', linestyle='--', label='Oversold (30)')
@@ -44,3 +44,16 @@ def plot_rsi(data, rsi, ticker):
     plt.savefig(f'static/{ticker}_rsi.png')
     plt.close()
 
+
+def plot_price(data, ticker):
+    
+    plt.figure(figsize=(12, 6))
+    plt.plot(data.index, data['Close'], label='Close Price', color='blue')
+    plt.title(f'Close Price for {ticker}')
+    plt.xlabel('Date')
+    plt.ylabel('Close Price')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f'static/{ticker}_price.png')
+    plt.close()

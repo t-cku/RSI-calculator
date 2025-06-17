@@ -6,15 +6,24 @@
 
     <body>
         <h1>RSI Calculator</h1>
+        <p></p>
         <form method="POST">
             <input type="text" name="ticker" placeholder="Enter Ticker Symbol" required>
             <button type ="submit">Calculate RSI</button>
         </form>
 
+        
+        <p>Today's date: {{ current_date }}</p>
 
         {% if ticker %}
-            <h2>RSI for {{ ticker }}</h2>
-            <img src="{{ image_path }}" alt="RSI Chart">
+            <h2>{{ ticker }}</h2> 
+            <p><strong>Current Price:</strong> ${{ current_price }} </p>
+            <p><strong>Current RSI:</strong> {{ current_rsi }} </p>
+            <p></p>
+            <h3>Price Chart</h3>
+            <img src="{{ image_price }}" alt="Price Chart">
+            <h3>RSI Chart</h3>
+            <img src="{{ image_rsi }}" alt="RSI Chart">
         {% endif %}
 
         {% if error %}
